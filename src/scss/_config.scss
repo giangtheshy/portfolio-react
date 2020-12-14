@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+$primary-color: #272727;
+$secondary-color: #ff652f;
+
+@mixin transition-ease {
+  transition: all 0.3s ease-in-out;
+}
+@mixin flex($direc, $jc: initial, $ai: baseline) {
+  display: flex;
+  flex-direction: $direc;
+  justify-content: $jc;
+  align-items: $ai;
+}
+@mixin animation {
+  animation: animation-ease 0.5s ease-in-out;
+}
+
+@keyframes animation-ease {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+@mixin animation-top {
+  animation: animation-ease-top 0.5s ease-in-out;
+}
+
+@keyframes animation-ease-top {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  outline: none;
+  font-family: "Lato", sans-serif;
+}
+
+@mixin middle {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+@mixin large {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
+@mixin small {
+  @media (min-width: 0px) and (max-width: 390px) {
+    @content;
+  }
+}
+@include middle {
+  #root {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100vh;
+    border: 1px solid #fff;
+    .home-page {
+      .social-container {
+        left: 40%;
+      }
+    }
+  }
+}
+@include large {
+  #root {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100vh;
+    border: 1px solid #fff;
+    .home-page {
+      .social-container {
+        left: 42%;
+      }
+    }
+    .contact {
+      .info {
+        margin-top: 6rem;
+        width: 70%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1rem;
+      }
+    }
+  }
+}
+@include small {
+  #root {
+    .navbar {
+      width: 70%;
+    }
+    .home-page {
+      h1 {
+        font-size: 3rem;
+      }
+      .social-container {
+        left: 20%;
+      }
+    }
+    .about {
+      .info-container {
+        .info-center {
+          width: 100%;
+          .note {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
+}
